@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <h1>What's in your fridge?</h1>
+  <form method="post" action="/spin">
+    <div class="form-group">
+      <label for="ingredients">Enter ingredients (comma separated):</label>
+      <input type="text" class="form-control" id="ingredients" name="ingredients" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Spin</button>
+  </form>
+{% endblock %}

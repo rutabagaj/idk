@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <h2>Submit Recipe</h2>
+  <form method="post">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <div class="form-group">
+      <label for="ingredients">Ingredients (comma separated)</label>
+      <input type="text" class="form-control" id="ingredients" name="ingredients" required>
+    </div>
+    <div class="form-group">
+      <label for="instructions">Instructions</label>
+      <textarea class="form-control" id="instructions" name="instructions" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Add Recipe</button>
+  </form>
+{% endblock %}
