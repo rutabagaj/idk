@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Tomato Pasta",
+    "ingredients": ["pasta", "tomato", "garlic", "olive oil"],
+    "instructions": "Boil pasta. Cook tomatoes with garlic in olive oil. Mix together.",
+    "votes": 0
+  },
+  {
+    "id": 2,
+    "title": "Veggie Omelette",
+    "ingredients": ["eggs", "bell pepper", "onion", "cheese"],
+    "instructions": "Beat eggs. Cook veggies. Combine with eggs and cheese in pan.",
+    "votes": 0
+  },
+  {
+    "id": 3,
+    "title": "Chicken Salad",
+    "ingredients": ["chicken", "lettuce", "tomato", "cucumber"],
+    "instructions": "Mix cooked chicken with chopped veggies.",
+    "votes": 0
+  }
+]

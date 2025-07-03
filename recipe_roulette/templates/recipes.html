@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <h2>All Recipes</h2>
+  <ul class="list-group">
+    {% for r in recipes %}
+      <li class="list-group-item">
+        <h5>{{ r.title }} ({{ r.votes }} votes)</h5>
+        <p>Ingredients: {{ r.ingredients | join(', ') }}</p>
+        <form method="post" action="/upvote/{{ r.id }}" class="d-inline">
+          <button type="submit" class="btn btn-sm btn-outline-primary">Upvote</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
