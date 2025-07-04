@@ -8,6 +8,7 @@ Recipe Roulette is a simple web application that suggests recipes based on the i
 - Submit new recipes with ingredients and instructions.
 - View all recipes and upvote your favorites. Upvotes are limited to one every 10 minutes per user.
 
+
 ## Requirements
 
 - Python 3.8+

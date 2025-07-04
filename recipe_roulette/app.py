@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from datetime import datetime, timedelta
 from . import recipe_service
@@ -38,6 +39,7 @@ def recipes():
 
 @app.route('/upvote/<int:recipe_id>', methods=['POST'])
 def upvote(recipe_id):
+
     now = datetime.utcnow()
     last_upvotes = session.get('last_upvotes', {})
     last_time_str = last_upvotes.get(str(recipe_id))
@@ -50,6 +52,7 @@ def upvote(recipe_id):
     recipe_service.upvote_recipe(recipe_id)
     last_upvotes[str(recipe_id)] = now.isoformat()
     session['last_upvotes'] = last_upvotes
+
     return redirect(url_for('recipes'))
 
 

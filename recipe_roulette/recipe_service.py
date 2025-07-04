@@ -1,7 +1,9 @@
 import json
 import random
 from pathlib import Path
+
 from typing import List
+
 
 DATA_FILE = Path(__file__).resolve().parent.parent / 'data' / 'recipes.json'
 
@@ -17,8 +19,6 @@ def save_recipes(recipes):
     with open(DATA_FILE, 'w') as f:
         json.dump(recipes, f, indent=2)
 
-
-
 def filter_recipes(ingredients):
     recipes = load_recipes()
     lower_ingredients = {ing.strip().lower() for ing in ingredients if ing.strip()}
@@ -30,6 +30,7 @@ def filter_recipes(ingredients):
         if lower_ingredients.issubset(recipe_ings):
             matches.append(recipe)
     return matches
+
 
 
 def generate_simple_recipe(ingredients: List[str]) -> dict:
@@ -51,6 +52,7 @@ def random_recipes(ingredients, limit=3):
     matches = filter_recipes(ingredients)
     if not matches:
         matches.append(generate_simple_recipe(ingredients))
+
     random.shuffle(matches)
     return matches[:limit]
 
@@ -77,3 +79,4 @@ def upvote_recipe(recipe_id):
             recipe['votes'] += 1
             break
     save_recipes(recipes)
+

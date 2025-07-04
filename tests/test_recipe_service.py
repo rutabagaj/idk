@@ -31,6 +31,7 @@ def test_upvote_recipe(tmp_path, monkeypatch):
     assert data[0]['votes'] == 1
 
 
+
 def test_random_recipes_generated(monkeypatch):
     def fake_filter(_):
         return []
@@ -39,3 +40,4 @@ def test_random_recipes_generated(monkeypatch):
 
     result = recipe_service.random_recipes(['x'])
     assert result[0]['ingredients'] == ['x']
+
