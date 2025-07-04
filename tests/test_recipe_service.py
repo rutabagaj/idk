@@ -29,3 +29,15 @@ def test_upvote_recipe(tmp_path, monkeypatch):
     recipe_service.upvote_recipe(1)
     data = json.loads(data_file.read_text())
     assert data[0]['votes'] == 1
+
+
+
+def test_random_recipes_generated(monkeypatch):
+    def fake_filter(_):
+        return []
+
+    monkeypatch.setattr(recipe_service, 'filter_recipes', fake_filter)
+
+    result = recipe_service.random_recipes(['x'])
+    assert result[0]['ingredients'] == ['x']
+

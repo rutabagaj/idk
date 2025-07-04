@@ -1,7 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for
+
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+from datetime import datetime, timedelta
 from . import recipe_service
 
 app = Flask(__name__)
+app.secret_key = 'replace-this-secret'
 
 
 @app.route('/')
@@ -36,7 +39,20 @@ def recipes():
 
 @app.route('/upvote/<int:recipe_id>', methods=['POST'])
 def upvote(recipe_id):
+
+    now = datetime.utcnow()
+    last_upvotes = session.get('last_upvotes', {})
+    last_time_str = last_upvotes.get(str(recipe_id))
+    if last_time_str:
+        last_time = datetime.fromisoformat(last_time_str)
+        if now - last_time < timedelta(minutes=10):
+            flash('You can only upvote this recipe once every 10 minutes.')
+            return redirect(url_for('recipes'))
+
     recipe_service.upvote_recipe(recipe_id)
+    last_upvotes[str(recipe_id)] = now.isoformat()
+    session['last_upvotes'] = last_upvotes
+
     return redirect(url_for('recipes'))
 
 
