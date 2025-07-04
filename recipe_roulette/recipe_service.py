@@ -19,7 +19,6 @@ def save_recipes(recipes):
 
 
 
-
 def filter_recipes(ingredients):
     recipes = load_recipes()
     lower_ingredients = {ing.strip().lower() for ing in ingredients if ing.strip()}
@@ -78,4 +77,3 @@ def upvote_recipe(recipe_id):
             recipe['votes'] += 1
             break
     save_recipes(recipes)
-
